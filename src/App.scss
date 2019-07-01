@@ -1,0 +1,34 @@
+$grid-columns: 30;
+$grid-rows: 100;
+
+.grid-wrapper {
+    display: grid;
+    grid-template-columns: 250px repeat($grid-columns, 30px) 150px;
+    grid-template-rows: repeat($grid-rows, 40px);  
+  
+}
+
+.grid-item {
+    border: 1px solid black;
+    &__centered {
+        place-self: center;
+    }
+}
+
+@for $x from 1 through $grid-columns {
+    @for $y from 1 through $grid-rows {
+        .grid-item-#{$x}-#{$y}{
+            grid-column: $x;
+            grid-row: $y;
+        }
+    }
+    
+}
+
+.grid-item-debug {
+    grid-column: 1 / 5;
+    grid-row: 6 / 11;
+}
+ 
+
+

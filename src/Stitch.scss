@@ -1,0 +1,28 @@
+.oval {
+    display: block;
+    width: 15px;
+    height: 40px;
+    border-radius: 7px / 20px;
+    background-color: white;
+    border: 0.5px black solid;
+    
+    &__forward {
+        transform: translateX(6px) rotate(35deg);
+    }
+    &__backward {
+        transform: translateX(6px) rotate(-35deg);
+        
+    }
+    
+    // TODO Make styles for the double forward or double backward
+
+    /*.double-oval {
+}   */
+}
+
+.stitch {
+    &__backward{
+        background-color: gray;
+    }
+}
+

@@ -66,3 +66,21 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+### User actions
+A user should be able to:
+- change the direction of a single model stitch, and then all stitches after that stitch change direction too
+- change the color of the master stitch
+- change the direction of a master column
+- change one color for another color (and all stitches in the color will change to the new color)
+- save a pattern
+- open a latest saved pattern
+- print a pattern
+- see a longer version of the current model
+- add more edge columns
+- add more center columns
+- add more model rows
+- see the latest used colors
+(all until this point have been moved to Asana for PM reasons)
+- (? add more card rows/yarns)
