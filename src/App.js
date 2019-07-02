@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.scss';
-//import ClickableStitch from './ClickableStitch';
 import Settings from './Settings';
 import PatternContainer from './PatternContainer';
 
@@ -12,7 +11,7 @@ class App extends React.Component {
         this.handleEdgeColumnChange = this.handleEdgeColumnChange.bind(this);
         this.state = {
             width: 12,
-            height: 4,
+            height: 10,
             showEdgeColumns: false,
             numberOfEdgeColumns: 3,
         }

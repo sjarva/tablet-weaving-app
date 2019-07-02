@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './ClickableStitch.scss';
 import Stitch from './Stitch';
 
@@ -7,8 +8,11 @@ export default class ClickableStitch extends React.Component {
         super(props);
         this.handleClick = this.handleClick.bind(this);
         this.handleDoubleClick = this.handleDoubleClick.bind(this);
+        const parentDirection = this.props.parentDirection;
+        console.log('ClickableStitch constructor');
+        console.log('parentDirection is ', parentDirection);
         this.state = {
-            status: 'forward',
+            status: parentDirection,
             prevent: false,
             timer: 0,
         }
@@ -45,7 +49,14 @@ export default class ClickableStitch extends React.Component {
     render() {
         return <div className={`grid-item grid-item-${this.props.c}-${this.props.r}`}
         onClick={this.handleClick} onDoubleClick={this.handleDoubleClick}>
-            <Stitch status={this.state.status} c={this.props.c} r={this.props.r}></Stitch>
+            <Stitch color={this.props.color} status={this.state.status} c={this.props.c} r={this.props.r}></Stitch>
         </div>
     }
+}
+
+ClickableStitch.propTypes = {
+    c: PropTypes.number.isRequired,
+    r: PropTypes.number.isRequired,
+    color: PropTypes.string.isRequired,
+    parentDirection: PropTypes.string.isRequired,
 }

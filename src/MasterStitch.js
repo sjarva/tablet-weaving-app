@@ -12,12 +12,12 @@ export default class MasterStitch extends React.Component {
     // Color change
     handleClick() {
         console.log('You clicked a master stitch!');
-        let index = this.props.index;
+        //let index = this.props.index;
 
         // Todo, hoida seuraavan värin valitseminen jotenkin
-        let color = this.props.color;
+        //let color = this.props.color;
         // Call a prop
-        this.props.handleColorChange(index, color);
+        //this.props.handleColorChange(index, color);
     }
 
     render() {
