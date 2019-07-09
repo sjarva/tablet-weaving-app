@@ -8,11 +8,7 @@ export default class ClickableStitch extends React.Component {
         super(props);
         this.handleClick = this.handleClick.bind(this);
         this.handleDoubleClick = this.handleDoubleClick.bind(this);
-        const parentDirection = this.props.parentDirection;
-        console.log('ClickableStitch constructor');
-        console.log('parentDirection is ', parentDirection);
         this.state = {
-            status: parentDirection,
             prevent: false,
             timer: 0,
         }
@@ -38,18 +34,24 @@ export default class ClickableStitch extends React.Component {
 
     doClickAction() {
         console.log('Clickable stitch click!');
-        this.setState({status: this.state.status === 'forward' ? 'backward' : 'forward'});
+        this.props.handleClick(this.props.r);
     }
 
     doDoubleClickAction() {
       console.log('Clickable Stitch Double click works!!');
-      this.setState({status: this.state.status === 'double-forward' ? 'double-backward' : 'double-forward'});
+      this.props.handleDoubleClick(this.props.r);
     }
 
     render() {
         return <div className={`grid-item grid-item-${this.props.c}-${this.props.r}`}
         onClick={this.handleClick} onDoubleClick={this.handleDoubleClick}>
-            <Stitch color={this.props.color} status={this.state.status} c={this.props.c} r={this.props.r}></Stitch>
+            <Stitch 
+            color={this.props.color}
+            status={this.props.direction}
+            c={this.props.c}
+            r={this.props.r}
+            againstMasterDir={this.props.againstMasterDir}
+            ></Stitch>
         </div>
     }
 }
@@ -58,5 +60,8 @@ ClickableStitch.propTypes = {
     c: PropTypes.number.isRequired,
     r: PropTypes.number.isRequired,
     color: PropTypes.string.isRequired,
-    parentDirection: PropTypes.string.isRequired,
+    direction: PropTypes.string.isRequired,
+    againstMasterDir: PropTypes.bool.isRequired,
+    handleClick: PropTypes.func.isRequired,
+    handleDoubleClick: PropTypes.func.isRequired,
 }

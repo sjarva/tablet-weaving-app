@@ -3,7 +3,6 @@ import ColumnContainer from './ColumnContainer';
 import PropTypes from 'prop-types';
 
 export default class PatternContainer extends React.Component {
-  
     constructor(props) {
         super(props);
         this.state = {

@@ -23,7 +23,12 @@ export default class MasterStitch extends React.Component {
     render() {
         return <div className={`grid-item grid-item-${this.props.c}-${this.props.r}`}
         onClick={this.handleClick}>
-            <Stitch color={this.props.color} status={this.props.status} c={this.props.c} r={this.props.r}></Stitch>
+            <Stitch 
+                color={this.props.color}
+                status={this.props.status}
+                c={this.props.c}
+                r={this.props.r}
+                againstMasterDir={false}></Stitch>
         </div>
     }
 }

@@ -3,7 +3,7 @@
     width: 15px;
     height: 40px;
     border-radius: 7px / 20px;
-    background-color: white;
+    
     border: 0.5px black solid;
     
     &__forward {
@@ -23,6 +23,12 @@
 .stitch {
     &__backward{
         background-color: gray;
+    }
+    &__against{
+        background-color: gray;
+    }
+    &__along{
+        //background-color: white;
     }
 }
 
