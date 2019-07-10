@@ -18,9 +18,11 @@ export default class Column extends React.Component {
         this.changeNormalStsState = this.changeNormalStsState.bind(this);
         this.changeOneStitchAfterOneClick = this.changeOneStitchAfterOneClick.bind(this);
         this.changeOneStitchAfterDoubleClick = this.changeOneStitchAfterDoubleClick.bind(this);
-
         this.changeWarpIndexToDouble = this.changeWarpIndexToDouble.bind(this);
         
+        this.getStitchBelow = this.getStitchBelow.bind(this);
+        this.getDoubleStitchColorFor = this.getDoubleStitchColorFor.bind(this);
+
         const defaultMasterDirection = 'forward';
 
         const normalSts = this.initiateNormalStsState(defaultMasterDirection);
@@ -28,12 +30,11 @@ export default class Column extends React.Component {
         this.state = {
             masterStsIndeces: [0, 1, 2, 3],
             direction: defaultMasterDirection,
-            stitchColors: ['#FF5733', '#D2B4DE', '#82E0AA', '#F7DC6F'],
+            stitchColors: ['#000000', '#FFFFFF', '#FFFFFF', '#000000'],
             normalSts: normalSts,
         }
     }
 
-    // Uusi
     initiateNormalStsState(defaultMasterDirection) {
         const rowShift = this.props.rowShift;
         const r = parseInt(this.props.r) - this.props.nmbMasterSts;
@@ -67,16 +68,25 @@ export default class Column extends React.Component {
         return currentWarpIndex === 0 ? (this.props.nmbMasterSts - 1) : (currentWarpIndex - 1);
     }
 
-    changeNormalStitch(stitchIndex, shouldChangeMasterDir) {
-        let currentStitch = this.state.normalSts[stitchIndex];
+    getStitchBelow(stitchIndex) {
         let stitchBelow;
-        // If the current stitch is the lowest of the pattern, the stitch below is latest master stitch
+        // If the current stitch is the lowest of the pattern repeat, the stitch below is latest master stitch
         if (stitchIndex === (this.props.r - this.props.nmbMasterSts)) {
             stitchBelow = {againstMasterDir: false, direction: this.state.direction, warpIndex: this.state.masterStsIndeces[3]};
         }
         else {
             stitchBelow = this.state.normalSts[(stitchIndex + 1)];
         }
+        return stitchBelow;
+    }
+
+    getDoubleStitchColorFor(stitchIndex, isAgainstMasterDir){
+        return isAgainstMasterDir ? this.state.stitchColors[stitchIndex -1] : this.state.stitchColors[stitchIndex +1];
+    }
+
+    changeNormalStitchDirection(stitchIndex, shouldChangeMasterDir) {
+        let currentStitch = this.state.normalSts[stitchIndex];
+        let stitchBelow = this.getStitchBelow(stitchIndex);
 
         currentStitch.direction = currentStitch.direction === 'forward' ? 'backward' : 'forward';
         if (shouldChangeMasterDir) {
@@ -94,6 +104,20 @@ export default class Column extends React.Component {
         return currentStitch;
     }
 
+    changeNormalStitchIndex(stitchIndex, isNowDouble) {
+        let currentStitch = this.state.normalSts[stitchIndex];
+        let againstMasterDir = currentStitch.againstMasterDir;
+        let newWarpIndex;
+        if ((isNowDouble && againstMasterDir) || (!isNowDouble && !againstMasterDir)) {
+            newWarpIndex = this.getNextIndexAgainstMasterDirection(currentStitch.warpIndex);
+        }
+        else {
+            newWarpIndex = this.getNextIndexAlongMasterDirection(currentStitch.warpIndex);
+        }
+        currentStitch.warpIndex = newWarpIndex;
+        return currentStitch;
+    }
+
 
     changeNormalStsState(howManyTurns, stitchIndexR, shouldChangeMasterDir) {
         const rowShift = this.props.rowShift;
@@ -104,22 +128,28 @@ export default class Column extends React.Component {
             let currentStitch = copy[stitchIndexR];
             currentStitch.isDouble = currentStitch.isDouble ? false : true;
             currentStitch.warpIndex = this.changeWarpIndexToDouble(currentStitch.warpIndex);
-            // Doesn't affect other stitches in the column, no need to update them
+            currentStitch.doubleColor = this.getDoubleStitchColorFor(currentStitch.warpIndex, currentStitch.isAgainstMasterDir);
+            // Does change other stitches' indeces, changing those
+            let newStitch; 
+            // Starting from above current stitch
+            for (let ri = stitchIndexR - 1; ri > rowShift; ri--) {
+                newStitch = this.changeNormalStitchIndex(ri, currentStitch.isDouble);
+                copy[ri] = newStitch;
+            }
         }
         
         // Just change forward to backward and other way round, affects all stitches above the current stitch
         if (howManyTurns === 1) {            
             let newStitch; 
             for (let ri = stitchIndexR; ri > rowShift; ri--) {
-                newStitch = this.changeNormalStitch(ri, shouldChangeMasterDir);
+                newStitch = this.changeNormalStitchDirection(ri, shouldChangeMasterDir);
                 copy[ri] = newStitch;
             }
-            this.setState({normalSts: copy})
         }
+        this.setState({normalSts: copy});
         
     }
 
-    // uusi
     changeAllStsStateAfterMasterDirChange() {
         const r = parseInt(this.props.r) - this.props.nmbMasterSts;
         this.changeNormalStsState(1, r, false);

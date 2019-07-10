@@ -3,7 +3,6 @@
     width: 15px;
     height: 40px;
     border-radius: 7px / 20px;
-    
     border: 0.5px black solid;
     
     &__forward {
@@ -11,14 +10,22 @@
     }
     &__backward {
         transform: translateX(6px) rotate(-35deg);
-        
     }
-    
-    // TODO Make styles for the double forward or double backward
-
-    /*.double-oval {
-}   */
 }
+
+.double-oval {
+    display: block;
+    width: 10px;
+    height: 26px;
+    border-radius: 5px / 13px;
+    border: 0.5px black solid;
+    &__forward {
+        transform: translateX(1px) translateY(7px);
+    }
+    &__backward {
+        transform: translateX(1px) translateY(7px);
+    }
+}   
 
 .stitch {
     &__backward{
