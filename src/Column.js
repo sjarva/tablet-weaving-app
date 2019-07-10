@@ -47,6 +47,7 @@ export default class Column extends React.Component {
                 direction: defaultMasterDirection,
                 againstMasterDir: false,
                 isDouble: false,
+                doubleColor: '',
             };
         }
 
@@ -68,28 +69,23 @@ export default class Column extends React.Component {
 
     changeNormalStitch(stitchIndex, shouldChangeMasterDir) {
         let currentStitch = this.state.normalSts[stitchIndex];
-        console.log('currentStitch is ', currentStitch);
         let stitchBelow;
+        // If the current stitch is the lowest of the pattern, the stitch below is latest master stitch
         if (stitchIndex === (this.props.r - this.props.nmbMasterSts)) {
-            stitchBelow = {againstMasterDir: false, direction: this.state.direction, warpIndex: this.state.masterStsIndeces[4]};
+            stitchBelow = {againstMasterDir: false, direction: this.state.direction, warpIndex: this.state.masterStsIndeces[3]};
         }
         else {
             stitchBelow = this.state.normalSts[(stitchIndex + 1)];
         }
-        
-
-        console.log('stitchBelow is ', stitchBelow);
 
         currentStitch.direction = currentStitch.direction === 'forward' ? 'backward' : 'forward';
         if (shouldChangeMasterDir) {
             currentStitch.againstMasterDir = currentStitch.againstMasterDir ? false : true;
         }
-        
-        const currentWarpIndex = currentStitch.warpIndex;
-        // 
+
         if (currentStitch.againstMasterDir === stitchBelow.againstMasterDir) {
-            const newWarpIndex = currentStitch.againstMasterDir ? 
-                this.getNextIndexAgainstMasterDirection(currentWarpIndex) : this.getNextIndexAlongMasterDirection(currentWarpIndex);
+            const newWarpIndex = currentStitch.againstMasterDir ?
+                this.getNextIndexAgainstMasterDirection(stitchBelow.warpIndex) : this.getNextIndexAlongMasterDirection(stitchBelow.warpIndex);
             currentStitch.warpIndex = newWarpIndex;
         }
         else {
@@ -100,15 +96,11 @@ export default class Column extends React.Component {
 
 
     changeNormalStsState(howManyTurns, stitchIndexR, shouldChangeMasterDir) {
-        console.log('!!!!! changeNormalStsState function');
-        console.log('howManyTurns is ', howManyTurns);
-        console.log('stitchIndexR is ', stitchIndexR);
         const rowShift = this.props.rowShift;
         let copy = [...this.state.normalSts];
         
         // Changing doubleness
         if (howManyTurns === 2) {
-            console.log('Double change!!');
             let currentStitch = copy[stitchIndexR];
             currentStitch.isDouble = currentStitch.isDouble ? false : true;
             currentStitch.warpIndex = this.changeWarpIndexToDouble(currentStitch.warpIndex);
@@ -116,19 +108,12 @@ export default class Column extends React.Component {
         }
         
         // Just change forward to backward and other way round, affects all stitches above the current stitch
-        if (howManyTurns === 1) {
-            console.log('forward/backward change testing');
-            
+        if (howManyTurns === 1) {            
             let newStitch; 
             for (let ri = stitchIndexR; ri > rowShift; ri--) {
-                console.log('updating all stitches, index is ', ri);
                 newStitch = this.changeNormalStitch(ri, shouldChangeMasterDir);
                 copy[ri] = newStitch;
-                console.log('newStitch is ', newStitch);
             }
-
-            console.log('done updating all sts, copy is ', copy);
-
             this.setState({normalSts: copy})
         }
         
@@ -141,23 +126,18 @@ export default class Column extends React.Component {
     }
 
     changeOneStitchAfterOneClick(index) {
-        console.log('COLUMN changeOneStitchAfterOneClick');
         this.changeNormalStsState(1, index, true);
     }
 
     changeOneStitchAfterDoubleClick(index) {
-        console.log('COLUMN changeOneStitchAfterDoubleClick');
         this.changeNormalStsState(2, index, false);
     }
 
     handleMasterStsDirectionChange() {
-        console.log('Changing direction of the master column');
         this.setState({direction: this.state.direction === 'forward' ? 'backward': 'forward'}, this.changeAllStsStateAfterMasterDirChange);
     }
 
     handleMasterStsColorChange(index, color) {
-        console.log('handleMasterStsColorChange, index is ', index);
-        console.log('color is ', color);
         this.setState({stitchColors: this.stitchColors[index] = color});
     }
 
@@ -190,26 +170,25 @@ export default class Column extends React.Component {
 
         const showNormalSts = this.props.showNormalSts;
         const modelSts = [];
-        const nmbMasterSts = this.props.nmbMasterSts;
         
-            for (let ri = r; ri > rowShift; ri--){
-                // Count index so that a stitch knows what color to ask
-                const index = ((r- ri) % nmbMasterSts);
-                const color = this.state.stitchColors[index];
-                
-                if (showNormalSts) {
-                    console.log('creating a clickable stitch, direction is ', this.state.normalSts[ri].direction);
-                    modelSts.push(<ClickableStitch 
-                        color={color} 
-                        key={'' + ci + '0' + ri}
-                        c={ci} r={ri}
-                        direction={this.state.normalSts[ri].direction}
-                        againstMasterDir={this.state.normalSts[ri].againstMasterDir}
-                        handleClick={this.changeOneStitchAfterOneClick}
-                        handleDoubleClick={this.changeOneStitchAfterDoubleClick}
-                    ></ClickableStitch>);
-                }
+        for (let ri = r; ri > rowShift; ri--){
+            const curSt = this.state.normalSts[ri];
+            const color = this.state.stitchColors[curSt.warpIndex];
+
+            if (showNormalSts) {
+                modelSts.push(<ClickableStitch 
+                    color={color}
+                    key={'' + ci + '0' + ri}
+                    c={ci} r={ri}
+                    direction={curSt.direction}
+                    againstMasterDir={curSt.againstMasterDir}
+                    handleClick={this.changeOneStitchAfterOneClick}
+                    handleDoubleClick={this.changeOneStitchAfterDoubleClick}
+                    isDouble={curSt.isDouble}
+                    doubleColor={curSt.doubleColor}
+                ></ClickableStitch>);
             }
+        }
 
         return modelSts;
     }
