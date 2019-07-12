@@ -11,7 +11,9 @@ $grid-rows: 100;
 .grid-item {
     border: 1px solid black;
     &__centered {
-        place-self: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
 
