@@ -18,13 +18,13 @@ class App extends React.Component {
     }
 
     handleHeight(num) {
-        console.log('num is ', num);
-        this.setState({height: num});
+        console.log('new height is ', num);
+        this.setState({height: parseInt(num)});
     }
 
     handleWidht(num) {
-        console.log('num is ', num);
-        this.setState({width: num});
+        console.log('new width is ', num);
+        this.setState({width: parseInt(num)});
     }
 
     handleShowEdgeChange() {
@@ -32,8 +32,8 @@ class App extends React.Component {
     }
 
     handleEdgeColumnChange(num) {
-        console.log('new edge columns is ', num);
-        this.setState({numberOfEdgeColumns: num})
+        console.log('new edge column amount is ', num);
+        this.setState({numberOfEdgeColumns: parseInt(num)})
     }
 
     render() {
