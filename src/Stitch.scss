@@ -1,8 +1,8 @@
 .oval {
     display: block;
     width: 15px;
-    height: 40px;
-    border-radius: 7px / 20px;
+    height: 38px;
+    border-radius: 7px / 19px;
     border: 0.5px black solid;
     
     &__forward {
@@ -20,10 +20,10 @@
     border-radius: 5px / 13px;
     border: 0.5px black solid;
     &__forward {
-        transform: translateX(1px) translateY(7px);
+        transform: translateX(1px) translateY(6px);
     }
     &__backward {
-        transform: translateX(1px) translateY(7px);
+        transform: translateX(1px) translateY(6px);
     }
 }   
 

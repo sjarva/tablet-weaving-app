@@ -4,7 +4,7 @@ $grid-rows: 100;
 .grid-wrapper {
     display: grid;
     grid-template-columns: 250px repeat($grid-columns, 30px) 150px;
-    grid-template-rows: repeat($grid-rows, 40px);  
+    grid-template-rows: repeat($grid-rows, 41px);  
   
 }
 
