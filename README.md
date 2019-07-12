@@ -70,9 +70,9 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 ### User actions
 A user should be able to:
-- change the direction of a single model stitch, and then all stitches after that stitch change direction too
+[x] change the direction of a single model stitch, and then all stitches after that stitch change direction too
 - change the color of the master stitch
-- change the direction of a master column
+[x] change the direction of a master column
 - change one color for another color (and all stitches in the color will change to the new color)
 - save a pattern
 - open a latest saved pattern
