@@ -33,12 +33,10 @@ export default class ClickableStitch extends React.Component {
     }
 
     doClickAction() {
-        console.log('Clickable stitch click!');
         this.props.handleClick(this.props.r);
     }
 
     doDoubleClickAction() {
-      console.log('Clickable Stitch Double click works!!');
       this.props.handleDoubleClick(this.props.r);
     }
 

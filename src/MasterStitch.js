@@ -11,7 +11,6 @@ export default class MasterStitch extends React.Component {
 
     // Color change
     handleClick() {
-        console.log('You clicked a master stitch!');
         //let index = this.props.index;
 
         // Todo, hoida seuraavan värin valitseminen jotenkin

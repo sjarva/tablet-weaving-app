@@ -1,6 +1,6 @@
 import React from "react";
 import { SketchPicker } from "react-color";
-import './ColorButton.scss';
+import "./ColorButton.scss";
 
 export default class ColorButton extends React.Component {
   constructor(props) {
@@ -13,10 +13,10 @@ export default class ColorButton extends React.Component {
     this.state = {
       displayColorPicker: false,
       color: {
-        r: this.props.color !== undefined ? this.props.color.r: '241',
-        g: this.props.color !== undefined ? this.props.color.g: '112',
-        b: this.props.color !== undefined ? this.props.color.b:'19',
-        a: this.props.color !== undefined ? this.props.color.a: '1',
+        r: this.props.color !== undefined ? this.props.color.r : "241",
+        g: this.props.color !== undefined ? this.props.color.g : "112",
+        b: this.props.color !== undefined ? this.props.color.b : "19",
+        a: this.props.color !== undefined ? this.props.color.a : "1"
       }
     };
   }
@@ -37,7 +37,13 @@ export default class ColorButton extends React.Component {
     return (
       <React.Fragment>
         <div className="swatch" onClick={this.handleClick}>
-          <div className="swatch-color" style={{background: `rgba(${ this.state.color.r }, ${ this.state.color.g }, ${ this.state.color.b }, ${ this.state.color.a })`}} />
+          <div
+            className="swatch-color"
+            style={{
+              background: `rgba(${this.state.color.r}, ${this.state.color.g}, 
+                ${this.state.color.b}, ${this.state.color.a})`
+            }}
+          />
         </div>
         {this.state.displayColorPicker ? (
           <div className="swatch-popover">

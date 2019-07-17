@@ -10,12 +10,10 @@ export default class Settings extends React.Component {
   }
 
   handleWidthChange(e) {
-    console.log("inputted value is ", e.target.value);
     this.props.handleWidht(e.target.value);
   }
 
   handleHeightChange(e) {
-    console.log("inputted value is ", e.target.value);
     this.props.handleHeight(e.target.value);
   }
   handleEdgeChange(e) {
