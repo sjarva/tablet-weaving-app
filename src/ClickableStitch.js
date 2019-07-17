@@ -52,7 +52,7 @@ export default class ClickableStitch extends React.Component {
             r={this.props.r}
             againstMasterDir={this.props.againstMasterDir}
             isDouble={this.props.isDouble}
-            doubleColor={this.props.doubleColor}
+            number={this.props.number}
             ></Stitch>
         </div>
     }
@@ -67,5 +67,5 @@ ClickableStitch.propTypes = {
     handleClick: PropTypes.func.isRequired,
     handleDoubleClick: PropTypes.func.isRequired,
     isDouble: PropTypes.bool.isRequired,
-    doubleColor: PropTypes.string,
+    number: PropTypes.number,
 }

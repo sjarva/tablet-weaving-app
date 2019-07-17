@@ -71,6 +71,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 ### User actions
 A user should be able to:
 [x] change the direction of a single model stitch, and then all stitches after that stitch change direction too
+[x] double click a stitch, and then the stitch becomes a double stitch, or, if the st was a double already, becomes a normal stitch
 - change the color of the master stitch
 [x] change the direction of a master column
 - change one color for another color (and all stitches in the color will change to the new color)
