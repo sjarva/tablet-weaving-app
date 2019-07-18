@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { SketchPicker } from "react-color";
 import "./ColorButton.scss";
 
@@ -9,15 +10,8 @@ export default class ColorButton extends React.Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleChange = this.handleChange.bind(this);
 
-    // Using color prop only to set initial color
     this.state = {
-      displayColorPicker: false,
-      color: {
-        r: this.props.color !== undefined ? this.props.color.r : "241",
-        g: this.props.color !== undefined ? this.props.color.g : "112",
-        b: this.props.color !== undefined ? this.props.color.b : "19",
-        a: this.props.color !== undefined ? this.props.color.a : "1"
-      }
+      displayColorPicker: false
     };
   }
 
@@ -30,7 +24,7 @@ export default class ColorButton extends React.Component {
   }
 
   handleChange(color) {
-    this.setState({ color: color.rgb });
+    this.props.handleChange(color, this.props.index);
   }
 
   render() {
@@ -40,8 +34,7 @@ export default class ColorButton extends React.Component {
           <div
             className="swatch-color"
             style={{
-              background: `rgba(${this.state.color.r}, ${this.state.color.g}, 
-                ${this.state.color.b}, ${this.state.color.a})`
+              background: this.props.color
             }}
           />
         </div>
@@ -49,7 +42,7 @@ export default class ColorButton extends React.Component {
           <div className="swatch-popover">
             <div className="swatch-cover" onClick={this.handleClose} />
             <SketchPicker
-              color={this.state.color}
+              color={this.props.color}
               onChange={this.handleChange}
             />
           </div>
@@ -58,3 +51,9 @@ export default class ColorButton extends React.Component {
     );
   }
 }
+
+ColorButton.propTypes = {
+  color: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
+  handleChange: PropTypes.func.isRequired
+};

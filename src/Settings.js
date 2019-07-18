@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import ColorPanel from "./ColorPanel";
 import "./Settings.scss";
 export default class Settings extends React.Component {
@@ -7,6 +8,7 @@ export default class Settings extends React.Component {
     this.handleHeightChange = this.handleHeightChange.bind(this);
     this.handleWidthChange = this.handleWidthChange.bind(this);
     this.handleEdgeChange = this.handleEdgeChange.bind(this);
+    this.handleColorChange = this.handleColorChange.bind(this);
   }
 
   handleWidthChange(e) {
@@ -18,6 +20,10 @@ export default class Settings extends React.Component {
   }
   handleEdgeChange(e) {
     this.props.handleEdge(e.target.value);
+  }
+
+  handleColorChange(color, index) {
+    this.props.handleColor(color, index);
   }
 
   render() {
@@ -49,9 +55,20 @@ export default class Settings extends React.Component {
         </div>
         <div className="settings-colors">
           <label>Väripaletti:</label>
-          <ColorPanel />
+          <ColorPanel colors={this.props.colorPalette} handleChange={this.handleColorChange}></ColorPanel>
         </div>
       </div>
     );
   }
+}
+
+Settings.propTypes = {
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired,
+    nmbOfEdgeSts: PropTypes.number.isRequired,
+    colorPalette: PropTypes.array.isRequired,
+    handleWidht: PropTypes.func.isRequired,
+    handleHeight: PropTypes.func.isRequired,
+    handleEdge: PropTypes.func.isRequired,
+    handleColor: PropTypes.func.isRequired,
 }

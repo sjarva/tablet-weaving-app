@@ -175,8 +175,10 @@ export default class Column extends React.Component {
         this.setState({direction: this.state.direction === 'forward' ? 'backward': 'forward'}, this.changeAllStsStateAfterMasterDirChange);
     }
 
-    handleMasterStsColorChange(index, color) {
-        this.setState({stitchColors: this.stitchColors[index] = color});
+    handleMasterStsColorChange(index, colorHex) {
+        const copy = [...this.state.stitchColors];
+        copy[index] = colorHex;
+        this.setState({stitchColors: copy});
     }
 
     createDirectionIndicator() {
@@ -196,7 +198,8 @@ export default class Column extends React.Component {
                 index={index} color={this.state.stitchColors[index]} 
                 handleColorChange={this.handleMasterStsColorChange} 
                 key={'' + c + '0' + ri} status={this.state.direction}
-                c={c} r={ri}></MasterStitch>);
+                c={c} r={ri}
+                colorPalette={this.props.colorPalette}></MasterStitch>);
         }
         return masterSts;
     }
@@ -247,4 +250,5 @@ Column.propTypes = {
     nmbMasterSts: PropTypes.number.isRequired,
     rowShift: PropTypes.number.isRequired,
     showNormalSts: PropTypes.bool.isRequired,
+    colorPalette: PropTypes.array.isRequired,
 }

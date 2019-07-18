@@ -25,7 +25,7 @@ const shouldNormalStitchesBeShown = (c, ci, columnShift, nmbOfEdgeSts, showEdgeS
     return true;
 };
 
-const createColumns = (c, r, columnShift, rowShift, numberOfMasterRows, nmbOfEdgeSts, showEdgeSts) => {
+const createColumns = (c, r, columnShift, rowShift, numberOfMasterRows, nmbOfEdgeSts, showEdgeSts, colorPalette) => {
     // RI is the lowes row of the whole pattern
     const ri = parseInt(r) + rowShift + numberOfMasterRows;
     const columns = [];
@@ -38,15 +38,16 @@ const createColumns = (c, r, columnShift, rowShift, numberOfMasterRows, nmbOfEdg
             rowShift = {rowShift}
             nmbOfEdgeSts={nmbOfEdgeSts}
             showNormalSts={showNormalStitches}
+            colorPalette={colorPalette}
             ></Column>);
     }
     return columns;
 }
 
-const ColumnContainer = ({c, r, columnShift, rowShift, numberOfMasterRows, nmbOfEdgeSts, showEdgeSts}) => {
+const ColumnContainer = ({c, r, columnShift, rowShift, numberOfMasterRows, nmbOfEdgeSts, showEdgeSts, colorPalette}) => {
     return <React.Fragment>
         {createLetters(r, numberOfMasterRows, columnShift, rowShift)}
-        {createColumns(c, r, columnShift, rowShift, numberOfMasterRows, nmbOfEdgeSts, showEdgeSts)}
+        {createColumns(c, r, columnShift, rowShift, numberOfMasterRows, nmbOfEdgeSts, showEdgeSts, colorPalette)}
     </React.Fragment>;
 }
 

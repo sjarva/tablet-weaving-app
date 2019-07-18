@@ -19,7 +19,9 @@ export default class PatternContainer extends React.Component {
                 columnShift={this.state.columnShift} rowShift={this.state.rowShift} 
                 numberOfMasterRows={this.state.numberOfMasterRows}
                 nmbOfEdgeSts={this.props.nmbOfEdgeSts}
-                showEdgeSts={this.props.showEdgeSts}></ColumnContainer>
+                showEdgeSts={this.props.showEdgeSts}
+                colorPalette={this.props.colorPalette}
+                ></ColumnContainer>
         );
     }
 
@@ -30,4 +32,5 @@ PatternContainer.propTypes = {
     r: PropTypes.number.isRequired,
     showEdgeSts: PropTypes.bool.isRequired,
     nmbOfEdgeSts: PropTypes.number.isRequired,
+    colorPalette: PropTypes.array.isRequired,
 }
