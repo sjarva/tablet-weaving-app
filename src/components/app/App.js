@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.scss";
-import Settings from "./Settings";
-import PatternContainer from "./PatternContainer";
+import Settings from "../settings/Settings";
+import PatternContainer from "../pattern-container/PatternContainer";
 
 class App extends React.Component {
   constructor(props) {

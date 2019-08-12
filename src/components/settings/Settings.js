@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import ColorPanel from "./ColorPanel";
+import ColorPanel from "../color-panel/ColorPanel";
 import "./Settings.scss";
 export default class Settings extends React.Component {
   constructor(props) {

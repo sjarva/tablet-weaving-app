@@ -1,6 +1,6 @@
 import React from 'react';
-import LetterIndicator from './LetterIndicator';
-import Column from './Column';
+import LetterIndicator from '../indicators/LetterIndicator';
+import Column from '../column/Column';
 
 const createLetters = (rr, numberOfMasterRows, columnShift, rowShift) => {
     const r = parseInt(rr) + rowShift;
@@ -31,7 +31,7 @@ const createColumns = (c, r, columnShift, rowShift, numberOfMasterRows, nmbOfEdg
     const columns = [];
     for (let ci = columnShift; ci < c + columnShift; ci++) {
         const showNormalStitches = shouldNormalStitchesBeShown(c, ci, columnShift, nmbOfEdgeSts, showEdgeSts);
-        columns.push(<Column 
+        columns.push(<Column
             key={'' + ci + '0' + ri}
             c={ci} r={ri}
             nmbMasterSts={numberOfMasterRows}

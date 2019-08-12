@@ -1,5 +1,5 @@
 import React from 'react';
-import ColumnContainer from './ColumnContainer';
+import ColumnContainer from '../column-container/ColumnContainer';
 import PropTypes from 'prop-types';
 
 export default class PatternContainer extends React.Component {
@@ -14,9 +14,9 @@ export default class PatternContainer extends React.Component {
 
     render() {
         return (
-            <ColumnContainer 
+            <ColumnContainer
                 c={this.props.c} r={this.props.r}
-                columnShift={this.state.columnShift} rowShift={this.state.rowShift} 
+                columnShift={this.state.columnShift} rowShift={this.state.rowShift}
                 numberOfMasterRows={this.state.numberOfMasterRows}
                 nmbOfEdgeSts={this.props.nmbOfEdgeSts}
                 showEdgeSts={this.props.showEdgeSts}

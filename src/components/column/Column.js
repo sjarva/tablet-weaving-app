@@ -1,7 +1,7 @@
 import React from 'react';
-import DirectionIndicator from './DirectionIndicator';
-import MasterStitch from './MasterStitch';
-import ClickableStitch from './ClickableStitch';
+import DirectionIndicator from '../indicators/DirectionIndicator';
+import MasterStitch from '../master-stitch/MasterStitch';
+import ClickableStitch from '../clickable-stitch/ClickableStitch';
 import PropTypes from 'prop-types';
 
 export default class Column extends React.Component {
@@ -18,7 +18,7 @@ export default class Column extends React.Component {
         this.changeNormalStsState = this.changeNormalStsState.bind(this);
         this.changeOneStitchAfterOneClick = this.changeOneStitchAfterOneClick.bind(this);
         this.changeOneStitchAfterDoubleClick = this.changeOneStitchAfterDoubleClick.bind(this);
-        
+
         this.getNextIndexAlongMastDir = this.getNextIndexAlongMastDir.bind(this);
         this.getNextIndexAgainstMastDir = this.getNextIndexAgainstMastDir.bind(this);
 
@@ -40,7 +40,7 @@ export default class Column extends React.Component {
         const rowShift = this.props.rowShift;
         const r = parseInt(this.props.r) - this.props.nmbMasterSts;
         const nmbMasterSts = this.props.nmbMasterSts;
-        
+
         const normalSts = [];
         for (let ri = r; ri > rowShift; ri--){
             const index = ((r- ri) % nmbMasterSts);
@@ -106,7 +106,7 @@ export default class Column extends React.Component {
                 this.getNextIndexAgainstMastDir(stitchBelow.warpIndex, !sameMastDirAsBelow) : this.getNextIndexAlongMastDir(stitchBelow.warpIndex, !sameMastDirAsBelow);
             currentStitch.warpIndex = newWarpIndex;
         }
-        
+
         return currentStitch;
     }
 
@@ -128,7 +128,7 @@ export default class Column extends React.Component {
     changeNormalStsState(howManyTurns, stitchIndexR, shouldChangeMasterDir) {
         const rowShift = this.props.rowShift;
         let copy = [...this.state.normalSts];
-        
+
         // Changing doubleness
         if (howManyTurns === 2) {
             let currentStitch = copy[stitchIndexR];
@@ -136,26 +136,26 @@ export default class Column extends React.Component {
             currentStitch.isDouble = currentStitch.isDouble ? false : true;
             // Changing index
             currentStitch = this.changeNormalStitchIndex(stitchIndexR, currentStitch.isDouble);
-            
+
             // Changes also other stitches' indeces, changing those
-            let newStitch; 
+            let newStitch;
             // Starting from above current stitch
             for (let ri = stitchIndexR - 1; ri > rowShift; ri--) {
                 newStitch = this.changeNormalStitchIndex(ri, currentStitch.isDouble);
                 copy[ri] = newStitch;
             }
         }
-        
+
         // Just change forward to backward and other way round, affects all stitches above the current stitch
-        if (howManyTurns === 1) {            
-            let newStitch; 
+        if (howManyTurns === 1) {
+            let newStitch;
             for (let ri = stitchIndexR; ri > rowShift; ri--) {
                 newStitch = this.changeNormalStitchDirection(ri, shouldChangeMasterDir);
                 copy[ri] = newStitch;
             }
         }
         this.setState({normalSts: copy});
-        
+
     }
 
     changeAllStsStateAfterMasterDirChange() {
@@ -182,7 +182,7 @@ export default class Column extends React.Component {
     }
 
     createDirectionIndicator() {
-        return <DirectionIndicator c={this.props.c} r={this.props.r +1} 
+        return <DirectionIndicator c={this.props.c} r={this.props.r +1}
         direction={this.state.direction} directionChange={this.handleMasterStsDirectionChange}></DirectionIndicator>
     }
 
@@ -191,12 +191,12 @@ export default class Column extends React.Component {
         const c = this.props.c;
         const nmbMasterSts = this.props.nmbMasterSts;
         const masterSts = [];
-        
+
         for (let ri = r; ri > r - nmbMasterSts; ri--) {
             let index = r - ri;
-            masterSts.push(<MasterStitch 
-                index={index} color={this.state.stitchColors[index]} 
-                handleColorChange={this.handleMasterStsColorChange} 
+            masterSts.push(<MasterStitch
+                index={index} color={this.state.stitchColors[index]}
+                handleColorChange={this.handleMasterStsColorChange}
                 key={'' + c + '0' + ri} status={this.state.direction}
                 c={c} r={ri}
                 colorPalette={this.props.colorPalette}></MasterStitch>);
@@ -211,13 +211,13 @@ export default class Column extends React.Component {
 
         const showNormalSts = this.props.showNormalSts;
         const modelSts = [];
-        
+
         for (let ri = r; ri > rowShift; ri--){
             const curSt = this.state.normalSts[ri];
             const color = this.state.stitchColors[curSt.warpIndex];
 
             if (showNormalSts) {
-                modelSts.push(<ClickableStitch 
+                modelSts.push(<ClickableStitch
                     color={color}
                     key={'' + ci + '0' + ri}
                     c={ci} r={ri}

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Stitch from '../stitch/Stitch';
 import './ClickableStitch.scss';
-import Stitch from './Stitch';
 
 export default class ClickableStitch extends React.Component {
     constructor(props) {
@@ -23,7 +23,7 @@ export default class ClickableStitch extends React.Component {
                 this.setState({prevent: false});
               }, 200)
         });
-      
+
     }
 
     handleDoubleClick() {
@@ -43,7 +43,7 @@ export default class ClickableStitch extends React.Component {
     render() {
         return <div className={`grid-item grid-item-${this.props.c}-${this.props.r}`}
         onClick={this.handleClick} onDoubleClick={this.handleDoubleClick}>
-            <Stitch 
+            <Stitch
             color={this.props.color}
             status={this.props.direction}
             c={this.props.c}

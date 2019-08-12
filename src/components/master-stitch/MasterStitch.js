@@ -1,5 +1,5 @@
 import React from "react";
-import Stitch from "./Stitch";
+import Stitch from "../stitch/Stitch";
 import PropTypes from "prop-types";
 import { GithubPicker } from "react-color";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import ColorButton from "./ColorButton";
+import ColorButton from "../color-button/ColorButton";
 
 const ColorPanel = ({colors, handleChange}) => {
     let index = -1;
