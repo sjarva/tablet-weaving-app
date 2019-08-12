@@ -6,9 +6,11 @@ Traditionally patterns for tablet weaving have been designed by pencil and paper
 
 The pattern marking notations and instructions differ from country to country. This app uses a notation that is developed by two Finnish tablet weavers, Maikki Karisto and Mervi Pasanen (which they introduce in their book Applesies and Fox Noses: Finnish Tabletwoven Bands, Salakirjat, 2013).
 
-Below is an image of the pattern notation. This pattern is called "Reversed Corners":
+Below is an image of the pattern notation. This pattern is called "Reversed Corners" (pattern number 24 from Karisto and Pasanen, 2013, p. 77):
 
-![Reserved Corners](src/assets/images/tablet_weaving_pattern_reversed_corners.jpg)
+![Reversed Corners](src/assets/images/tablet_weaving_pattern_reversed_corners.jpg)
+
+This notation shows both the end result and illustrates how to work the weaving to achieve it. The colors inside the oval shapes note the colors of the warp, that make up how the ribbon looks like. The background color and the ovals inside ovals illustrate how to work the pattern - background color shows if you are to turn the tablet forwards (white background) or against (grey background) the tablet's main direction. An oval inside an oval means you are to turn the tablet twice, whereas one oval means you are to turn it just once.
 
 ## Goals and state of development
 I started this project with the goal of making a Minimal Viable Product of a tablet weaving app for myself and my friends. (A personal goal was also to keep React framework active on my mind when e.g. at work I am using some other framework.)
