@@ -8,7 +8,7 @@ The pattern marking notations and instructions differ from country to country. T
 
 Below is an image of the pattern notation. This pattern is called "Reversed Corners":
 
-![Reserved Corners](src/assets/images/tablet_weaving_pattern_reversed_corners.jpg =200x)
+![Reserved Corners](src/assets/images/tablet_weaving_pattern_reversed_corners.jpg)
 
 ## Goals and state of development
 I started this project with the goal of making a Minimal Viable Product of a tablet weaving app for myself and my friends. (A personal goal was also to keep React framework active on my mind when e.g. at work I am using some other framework.)
