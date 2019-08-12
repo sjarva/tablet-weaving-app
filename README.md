@@ -8,7 +8,7 @@ The pattern marking notations and instructions differ from country to country. T
 
 Below is an image of the pattern notation. This pattern is called "Reversed Corners":
 
-![Reserved Corners](src/assets/images/tablet_weaving_pattern_reversed_corners.jpg)
+![Reserved Corners](src/assets/images/tablet_weaving_pattern_reversed_corners.jpg =200x)
 
 ## Goals and state of development
 I started this project with the goal of making a Minimal Viable Product of a tablet weaving app for myself and my friends. (A personal goal was also to keep React framework active on my mind when e.g. at work I am using some other framework.)
@@ -18,11 +18,11 @@ Below is a list of features that I have come up with and plan to implement for t
 
 ### List of features
 A user should be able to:
-[x] change the direction of a single model stitch, and then all stitches after that stitch change direction too
-[x] double click a stitch, and then the stitch becomes a double stitch, or, if the st was a double already, becomes a normal stitch
-[x] change the color of the master stitch
-[x] change the direction of a master column
-[x] see the latest used colors
+- [x] change the direction of a single model stitch, and then all stitches after that stitch change direction too
+- [x] double click a stitch, and then the stitch becomes a double stitch, or, if the st was a double already, becomes a normal stitch
+- [x] change the color of the master stitch
+- [x] change the direction of a master column
+- [x] see the latest used colors
 - change one color for another color (and all stitches in the color will change to the new color)
 - save a pattern
 - open a latest saved pattern
