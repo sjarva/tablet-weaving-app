@@ -3,7 +3,7 @@ import ColorButton from "../color-button/ColorButton";
 
 const ColorPanel = ({colors, handleChange}) => {
     let index = -1;
-    return <div>
+    return <div className="color-panel-js">
         {colors.map((color) => {
             index++;
             return (<ColorButton color={color} index={index} key={index} handleChange={handleChange}></ColorButton>);
