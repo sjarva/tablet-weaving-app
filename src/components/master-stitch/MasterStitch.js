@@ -31,8 +31,6 @@ export default class MasterStitch extends React.Component {
         <Stitch
           color={this.props.color}
           status={this.props.status}
-          c={this.props.c}
-          r={this.props.r}
           againstMasterDir={false}
         />
         {this.state.displayColorPicker ? (

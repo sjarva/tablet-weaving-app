@@ -46,8 +46,6 @@ export default class ClickableStitch extends React.Component {
             <Stitch
             color={this.props.color}
             status={this.props.direction}
-            c={this.props.c}
-            r={this.props.r}
             againstMasterDir={this.props.againstMasterDir}
             isDouble={this.props.isDouble}
             number={this.props.number}
