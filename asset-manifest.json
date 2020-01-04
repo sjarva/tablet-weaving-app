@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/my-tablet-weaving-app/static/css/main.f925d459.chunk.css",
-    "main.js": "/my-tablet-weaving-app/static/js/main.75c7ddfa.chunk.js",
-    "main.js.map": "/my-tablet-weaving-app/static/js/main.75c7ddfa.chunk.js.map",
-    "runtime~main.js": "/my-tablet-weaving-app/static/js/runtime~main.a8841419.js",
-    "runtime~main.js.map": "/my-tablet-weaving-app/static/js/runtime~main.a8841419.js.map",
-    "static/js/2.8af0fe5e.chunk.js": "/my-tablet-weaving-app/static/js/2.8af0fe5e.chunk.js",
-    "static/js/2.8af0fe5e.chunk.js.map": "/my-tablet-weaving-app/static/js/2.8af0fe5e.chunk.js.map",
-    "index.html": "/my-tablet-weaving-app/index.html",
-    "precache-manifest.382ce22ad7cebeec8bbce67b4fb81945.js": "/my-tablet-weaving-app/precache-manifest.382ce22ad7cebeec8bbce67b4fb81945.js",
-    "service-worker.js": "/my-tablet-weaving-app/service-worker.js",
-    "static/css/main.f925d459.chunk.css.map": "/my-tablet-weaving-app/static/css/main.f925d459.chunk.css.map"
+    "main.css": "/tablet-weaving-app/static/css/main.f925d459.chunk.css",
+    "main.js": "/tablet-weaving-app/static/js/main.8d4f04f2.chunk.js",
+    "main.js.map": "/tablet-weaving-app/static/js/main.8d4f04f2.chunk.js.map",
+    "runtime~main.js": "/tablet-weaving-app/static/js/runtime~main.e2af3325.js",
+    "runtime~main.js.map": "/tablet-weaving-app/static/js/runtime~main.e2af3325.js.map",
+    "static/js/2.8af0fe5e.chunk.js": "/tablet-weaving-app/static/js/2.8af0fe5e.chunk.js",
+    "static/js/2.8af0fe5e.chunk.js.map": "/tablet-weaving-app/static/js/2.8af0fe5e.chunk.js.map",
+    "index.html": "/tablet-weaving-app/index.html",
+    "precache-manifest.9403dadb444c7f31dc1dd4ce6384d5af.js": "/tablet-weaving-app/precache-manifest.9403dadb444c7f31dc1dd4ce6384d5af.js",
+    "service-worker.js": "/tablet-weaving-app/service-worker.js",
+    "static/css/main.f925d459.chunk.css.map": "/tablet-weaving-app/static/css/main.f925d459.chunk.css.map"
   }
 }
