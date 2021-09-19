@@ -1,12 +1,12 @@
 # App for designing and sharing tablet weaving patterns
 
-Tablet weaving is a handicraft technique that produces 1 to 5 cm wide ribbons, that can be used belts, straps and other forms of decorating clothes. The technique is historical, it dates back to early Iron Age in Europe. Modern day weavers do tablet weaving because it is easy to set up and learn, and it takes little space. You can read more about tablet weaving e.g. [on Wikipedia](https://en.wikipedia.org/wiki/Tablet_weaving).
+Tablet weaving is a handicraft technique that produces 1 to 5 cm wide ribbons, that can be used as belts, straps and other forms of decorating clothes. The technique is historical, it dates back to early Iron Age in Europe. Modern day weavers do tablet weaving because it is easy to set up and learn, and it takes little space. You can read more about tablet weaving e.g. [on Wikipedia](https://en.wikipedia.org/wiki/Tablet_weaving).
 
-Traditionally patterns for tablet weaving have been designed by pencil and paper. However, designing patterns is a process that has many repetitive and logical tasks, which could be easily automated. Therefore I developed this tablet weaving app, so that weavers could save their time and energy when designing new patterns.
+Traditionally patterns for tablet weaving have been designed on pencil and paper. However, designing patterns is a process that has many repetitive and logical tasks, which could be easily automated. Therefore I developed this tablet weaving app, so that weavers could save their time and energy when designing new patterns.
 
-The pattern marking notations and instructions differ from country to country. This app uses a notation that is developed by two Finnish tablet weavers, Maikki Karisto and Mervi Pasanen (which they introduce in their book Applesies and Fox Noses: Finnish Tabletwoven Bands, Salakirjat, 2013).
+The pattern marking notations and instructions differ from country to country. This app uses a notation that is developed by two Finnish tablet weavers, Maikki Karisto and Mervi Pasanen. They introduce the notation in their book [Applesies and Fox Noses: Finnish Tabletwoven Bands](https://www.amazon.com/APPLESIES-NOSES-FINNISH-TABLETWOVEN-BANDS/dp/952577449X) (Salakirjat, 2013).
 
-Below is an image of the pattern notation. This pattern is called "Reversed Corners" (pattern number 24 from Karisto and Pasanen, 2013, p. 77):
+Below is an example image of the pattern notation. This pattern is called "Reversed Corners" (pattern number 24 from Karisto and Pasanen, 2013, p. 77):
 
 ![Reversed Corners](src/assets/images/tablet_weaving_pattern_reversed_corners.jpg)
 
